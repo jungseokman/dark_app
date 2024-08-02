@@ -1,5 +1,8 @@
-import 'package:dark_app/features/dark%20app/config/styles.dart';
+import 'package:dark_app/features/dark_app/config/constans.dart';
+import 'package:dark_app/features/dark_app/config/styles.dart';
+import 'package:dark_app/features/dark_app/presentation/bloc/secret/secret_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButtonFill extends StatelessWidget {
@@ -16,12 +19,15 @@ class CustomButtonFill extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
+      child: AnimatedContainer(
+        duration: Constants.signinDuration,
         width: 205.w,
         height: 55.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.h),
-          color: AppColors.blueColors[0],
+          color: context.watch<SecretBloc>().state.isSecret
+              ? AppColors.greenColor[1]
+              : AppColors.blueColors[0],
         ),
         alignment: Alignment.center,
         child: Text(

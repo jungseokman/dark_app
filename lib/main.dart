@@ -1,5 +1,5 @@
-import 'package:dark_app/features/dark%20app/config/routers.dart';
-import 'package:dark_app/features/dark%20app/presentation/bloc/secret/secret_bloc.dart';
+import 'package:dark_app/features/dark_app/config/routers.dart';
+import 'package:dark_app/features/dark_app/presentation/bloc/secret/secret_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,6 +24,7 @@ class DarkApp extends StatelessWidget {
         minTextAdapt: true,
         builder: (context, child) {
           return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
             routerConfig: routers,
           );
         },
