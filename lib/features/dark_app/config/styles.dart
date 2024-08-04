@@ -38,7 +38,7 @@ abstract class AppColors {
     //? 0 ~ 2
     Color(0xff000000),
     Color.fromARGB(255, 62, 58, 80),
-    Color.fromARGB(255, 7, 0, 35),
+    Color.fromARGB(255, 5, 0, 24),
   ];
 
   //* 회색
@@ -66,7 +66,7 @@ abstract class AppColors {
 
   static const greenColor = [
     //? 0 ~ 2
-    Color.fromARGB(255, 51, 254, 0),
-    Color.fromARGB(255, 36, 176, 1),
+    Color.fromARGB(255, 44, 219, 0),
+    Color.fromARGB(255, 26, 125, 2),
   ];
 }
