@@ -24,9 +24,7 @@ class _ShellComponentState extends State<ShellComponent> {
     return Scaffold(
       body: Stack(
         children: [
-          SingleChildScrollView(
-            child: widget.child,
-          ),
+          widget.child,
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
@@ -36,6 +34,7 @@ class _ShellComponentState extends State<ShellComponent> {
                 border: Border(
                   top: BorderSide(color: AppColors.greyColors[0]),
                 ),
+                color: Colors.white,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

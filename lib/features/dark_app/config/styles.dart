@@ -25,6 +25,10 @@ class TextStyles {
         color: AppColors.blackColors[0],
         fontSize: 14.sp,
       );
+  static TextStyle get text2 => _font1.copyWith(
+        color: AppColors.greyColors[1],
+        fontSize: 12.sp,
+      );
 }
 
 abstract class AppColors {
@@ -45,6 +49,8 @@ abstract class AppColors {
   static const greyColors = [
     //? 0 ~ 2
     Color.fromARGB(255, 217, 216, 216),
+    Color.fromARGB(255, 152, 152, 152),
+    Color.fromARGB(255, 237, 234, 234),
   ];
 
   //* 파란색

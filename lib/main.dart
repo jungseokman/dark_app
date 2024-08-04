@@ -24,6 +24,9 @@ class DarkApp extends StatelessWidget {
         minTextAdapt: true,
         builder: (context, child) {
           return MaterialApp.router(
+            theme: ThemeData(
+              scaffoldBackgroundColor: Colors.white,
+            ),
             debugShowCheckedModeBanner: false,
             routerConfig: routers,
           );
