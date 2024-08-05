@@ -29,6 +29,14 @@ class TextStyles {
         color: AppColors.greyColors[1],
         fontSize: 12.sp,
       );
+  static TextStyle get text3 => _font1.copyWith(
+        color: AppColors.blackColors[0],
+        fontSize: 16.sp,
+      );
+  static TextStyle get text4 => _font1.copyWith(
+        color: AppColors.blackColors[0],
+        fontSize: 20.sp,
+      );
 }
 
 abstract class AppColors {
