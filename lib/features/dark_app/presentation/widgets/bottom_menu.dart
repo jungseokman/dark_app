@@ -1,6 +1,8 @@
 import 'package:dark_app/features/dark_app/config/constans.dart';
 import 'package:dark_app/features/dark_app/config/styles.dart';
+import 'package:dark_app/features/dark_app/presentation/bloc/secret/secret_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BottomMenu extends StatelessWidget {
@@ -21,6 +23,8 @@ class BottomMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isSecret = context.read<SecretBloc>().state.isSecret;
+
     return Padding(
       padding: EdgeInsets.only(top: 15.h),
       child: GestureDetector(
@@ -31,7 +35,9 @@ class BottomMenu extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                color: AppColors.blueColors[0],
+                color: isSecret
+                    ? AppColors.greenColor[0]
+                    : AppColors.blueColors[0],
               ),
               SizedBox(
                 height: 5.h,
@@ -39,7 +45,9 @@ class BottomMenu extends StatelessWidget {
               Text(
                 label,
                 style: TextStyles.text1.copyWith(
-                  color: AppColors.blueColors[0],
+                  color: isSecret
+                      ? AppColors.greenColor[0]
+                      : AppColors.blueColors[0],
                 ),
               ),
             ],
@@ -48,13 +56,19 @@ class BottomMenu extends StatelessWidget {
             children: [
               Icon(
                 icon,
+                color: isSecret
+                    ? AppColors.greenColor[1]
+                    : AppColors.blackColors[0],
               ),
               SizedBox(
                 height: 5.h,
               ),
               Text(
                 label,
-                style: TextStyles.text1,
+                style: TextStyles.text1.copyWith(
+                    color: isSecret
+                        ? AppColors.greenColor[1]
+                        : AppColors.blackColors[0]),
               ),
             ],
           ),

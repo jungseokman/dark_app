@@ -1,8 +1,16 @@
+import 'package:dark_app/features/dark_app/presentation/bloc/secret/secret_bloc.dart';
+import 'package:dark_app/features/dark_app/presentation/pages/chat_secret/chat_detail.dart';
+import 'package:dark_app/features/dark_app/presentation/pages/chat_secret/chat_secret_page.dart';
 import 'package:dark_app/features/dark_app/presentation/pages/edit/edit_page.dart';
+import 'package:dark_app/features/dark_app/presentation/pages/edit/edit_secret_page.dart';
 import 'package:dark_app/features/dark_app/presentation/pages/notice/notice_page.dart';
+import 'package:dark_app/features/dark_app/presentation/pages/notice/notice_secret_page.dart';
 import 'package:dark_app/features/dark_app/presentation/pages/setting/setting_page.dart';
+import 'package:dark_app/features/dark_app/presentation/pages/setting/setting_secret_page.dart';
 import 'package:dark_app/features/dark_app/presentation/pages/signin/signin_page.dart';
 import 'package:dark_app/features/dark_app/presentation/widgets/shell_component.dart';
+import 'package:dark_app/features/dark_app/presentation/widgets/shell_component_secret.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 final routers = GoRouter(
@@ -19,12 +27,21 @@ final routers = GoRouter(
     //? 쉡 화면
     ShellRoute(
       pageBuilder: (context, state, child) {
-        return NoTransitionPage(
-          key: state.pageKey,
-          child: ShellComponent(
-            child: child,
-          ),
-        );
+        if (context.read<SecretBloc>().state.isSecret) {
+          return NoTransitionPage(
+            key: state.pageKey,
+            child: ShellComponentSecret(
+              child: child,
+            ),
+          );
+        } else {
+          return NoTransitionPage(
+            key: state.pageKey,
+            child: ShellComponent(
+              child: child,
+            ),
+          );
+        }
       },
       routes: [
         //? 메인 화면
@@ -32,24 +49,55 @@ final routers = GoRouter(
           path: "/notice",
           name: "notice",
           pageBuilder: (context, state) {
-            return NoTransitionPage(
-                key: state.pageKey, child: const NoticePage());
+            if (context.read<SecretBloc>().state.isSecret) {
+              return NoTransitionPage(
+                  key: state.pageKey, child: const NoticeSecretPage());
+            } else {
+              return NoTransitionPage(
+                  key: state.pageKey, child: const NoticePage());
+            }
           },
         ),
         GoRoute(
           path: "/edit",
           name: "edit",
           pageBuilder: (context, state) {
-            return NoTransitionPage(
-                key: state.pageKey, child: const EditPage());
+            if (context.read<SecretBloc>().state.isSecret) {
+              return NoTransitionPage(
+                  key: state.pageKey, child: const EditSecretPage());
+            } else {
+              return NoTransitionPage(
+                  key: state.pageKey, child: const EditPage());
+            }
           },
         ),
         GoRoute(
           path: "/setting",
           name: "setting",
           pageBuilder: (context, state) {
+            if (context.read<SecretBloc>().state.isSecret) {
+              return NoTransitionPage(
+                  key: state.pageKey, child: const SettingSecretPage());
+            } else {
+              return NoTransitionPage(
+                  key: state.pageKey, child: const SettingPage());
+            }
+          },
+        ),
+        GoRoute(
+          path: "/chat",
+          name: "chat",
+          pageBuilder: (context, state) {
             return NoTransitionPage(
-                key: state.pageKey, child: const SettingPage());
+                key: state.pageKey, child: const ChatSecretPage());
+          },
+        ),
+        GoRoute(
+          path: "/chat/detail",
+          name: "chatDetail",
+          pageBuilder: (context, state) {
+            return NoTransitionPage(
+                key: state.pageKey, child: const ChatDetailPage());
           },
         ),
       ],

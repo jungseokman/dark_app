@@ -5,6 +5,7 @@ import 'package:dark_app/features/dark_app/presentation/widgets/custom_button_bo
 import 'package:dark_app/features/dark_app/presentation/widgets/custom_button_fill.dart';
 import 'package:dark_app/features/dark_app/presentation/widgets/custom_input.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -24,6 +25,7 @@ class _SigninPageState extends State<SigninPage> {
 
   void loginHandler() {
     if (idController.text == "show" && pwController.text == "123") {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
       idController.clear();
       pwController.clear();
       context.read<SecretBloc>().add(const ChangeSecretEvent(isSecret: true));
