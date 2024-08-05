@@ -1,6 +1,7 @@
 import 'package:dark_app/features/dark_app/config/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class ChatDetailPage extends StatelessWidget {
   const ChatDetailPage({super.key});
@@ -136,6 +137,30 @@ class ChatDetailPage extends StatelessWidget {
                     "전송",
                     style: TextStyles.text1
                         .copyWith(color: AppColors.greenColor[0]),
+                  ),
+                ),
+                SizedBox(
+                  width: 5.w,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    context.pop();
+                  },
+                  child: Container(
+                    width: 50.w,
+                    height: 30.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5.h),
+                      border: Border.all(
+                        color: AppColors.greenColor[0],
+                      ),
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "나가기",
+                      style: TextStyles.text1
+                          .copyWith(color: AppColors.greenColor[0]),
+                    ),
                   ),
                 )
               ],

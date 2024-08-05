@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class NoticeDetail extends StatelessWidget {
-  const NoticeDetail({super.key});
+class NoticeDetailSecret extends StatelessWidget {
+  const NoticeDetailSecret({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +22,7 @@ class NoticeDetail extends StatelessWidget {
                 child: Icon(
                   Icons.chevron_left_rounded,
                   size: 25.w,
+                  color: AppColors.greenColor[0],
                 ),
               ),
               SizedBox(
@@ -30,7 +31,9 @@ class NoticeDetail extends StatelessWidget {
               Expanded(
                 child: Text(
                   "제목제목ㄴㅁ아먼암너암너안머암너임",
-                  style: TextStyles.text4,
+                  style: TextStyles.text4.copyWith(
+                    color: AppColors.greenColor[0],
+                  ),
                 ),
               ),
             ],
@@ -43,7 +46,9 @@ class NoticeDetail extends StatelessWidget {
             children: [
               Text(
                 "2023-12-01",
-                style: TextStyles.text2,
+                style: TextStyles.text2.copyWith(
+                  color: AppColors.greenColor[1],
+                ),
               ),
             ],
           ),
@@ -52,7 +57,9 @@ class NoticeDetail extends StatelessWidget {
             children: [
               Text(
                 "작성자",
-                style: TextStyles.text2,
+                style: TextStyles.text2.copyWith(
+                  color: AppColors.greenColor[1],
+                ),
               ),
             ],
           ),
@@ -64,7 +71,9 @@ class NoticeDetail extends StatelessWidget {
             children: [
               Text(
                 "sakdjsakldjasljdlㅁ나어미나어ㅣㅁ나어ㅣㅏㅁ너이ㅏㅁ너임너임나ㅓ이마너이마",
-                style: TextStyles.text3,
+                style: TextStyles.text3.copyWith(
+                  color: AppColors.greenColor[0],
+                ),
               )
             ],
           )

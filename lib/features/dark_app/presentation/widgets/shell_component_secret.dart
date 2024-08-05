@@ -24,6 +24,7 @@ class _ShellComponentSecretState extends State<ShellComponentSecret> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: null,
       backgroundColor: context.read<SecretBloc>().state.isSecret
           ? AppColors.blackColors[2]
           : Colors.white,

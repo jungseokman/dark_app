@@ -3,6 +3,9 @@ import 'package:dark_app/features/dark_app/presentation/pages/chat_secret/chat_d
 import 'package:dark_app/features/dark_app/presentation/pages/chat_secret/chat_secret_page.dart';
 import 'package:dark_app/features/dark_app/presentation/pages/edit/edit_page.dart';
 import 'package:dark_app/features/dark_app/presentation/pages/edit/edit_secret_page.dart';
+import 'package:dark_app/features/dark_app/presentation/pages/join/join_page.dart';
+import 'package:dark_app/features/dark_app/presentation/pages/notice/notice_detail.dart';
+import 'package:dark_app/features/dark_app/presentation/pages/notice/notice_detail_secret.dart';
 import 'package:dark_app/features/dark_app/presentation/pages/notice/notice_page.dart';
 import 'package:dark_app/features/dark_app/presentation/pages/notice/notice_secret_page.dart';
 import 'package:dark_app/features/dark_app/presentation/pages/setting/setting_page.dart';
@@ -16,12 +19,20 @@ import 'package:go_router/go_router.dart';
 final routers = GoRouter(
   initialLocation: "/signin",
   routes: [
-    //? 가입 화면
+    //? 로그인 화면
     GoRoute(
       path: "/signin",
-      name: "signin ",
+      name: "signin",
       pageBuilder: (context, state) =>
           NoTransitionPage(key: state.pageKey, child: const SigninPage()),
+    ),
+
+    //? 가입 화면
+    GoRoute(
+      path: "/join",
+      name: "join",
+      pageBuilder: (context, state) =>
+          NoTransitionPage(key: state.pageKey, child: const JoinPage()),
     ),
 
     //? 쉡 화면
@@ -44,7 +55,7 @@ final routers = GoRouter(
         }
       },
       routes: [
-        //? 메인 화면
+        //? 게시글 화면
         GoRoute(
           path: "/notice",
           name: "notice",
@@ -58,6 +69,23 @@ final routers = GoRouter(
             }
           },
         ),
+
+        //? 게시글 상세
+        GoRoute(
+          path: "/notice/detail",
+          name: "noticeDetail",
+          pageBuilder: (context, state) {
+            if (context.read<SecretBloc>().state.isSecret) {
+              return NoTransitionPage(
+                  key: state.pageKey, child: const NoticeDetailSecret());
+            } else {
+              return NoTransitionPage(
+                  key: state.pageKey, child: const NoticeDetail());
+            }
+          },
+        ),
+
+        //? 게시글 작성
         GoRoute(
           path: "/edit",
           name: "edit",
@@ -71,6 +99,8 @@ final routers = GoRouter(
             }
           },
         ),
+
+        //? 설정
         GoRoute(
           path: "/setting",
           name: "setting",
@@ -84,6 +114,8 @@ final routers = GoRouter(
             }
           },
         ),
+
+        //? 대화
         GoRoute(
           path: "/chat",
           name: "chat",
@@ -92,6 +124,8 @@ final routers = GoRouter(
                 key: state.pageKey, child: const ChatSecretPage());
           },
         ),
+
+        //? 대화 상세
         GoRoute(
           path: "/chat/detail",
           name: "chatDetail",

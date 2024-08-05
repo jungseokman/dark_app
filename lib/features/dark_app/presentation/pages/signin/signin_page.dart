@@ -188,7 +188,12 @@ class _SigninPageState extends State<SigninPage> {
                 SizedBox(
                   height: 5.h,
                 ),
-                const CustomButtonBorder(text: "JOIN"),
+                CustomButtonBorder(
+                  text: "JOIN",
+                  onTap: () {
+                    context.pushNamed("join");
+                  },
+                ),
               ],
             ),
           )
